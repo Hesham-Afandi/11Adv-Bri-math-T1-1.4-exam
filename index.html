@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>⚡ Grade 11 Advanced Math - Lesson 4: Zeros of Polynomial Functions (T1-1.4-exam)</title>
+    <title>🧮 Zeros of Polynomial Functions Exam</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght=400;600;700;900&family=Inter:wght=400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Cairo', sans-serif; }
         body.en-mode { font-family: 'Inter', sans-serif; }
@@ -25,7 +25,7 @@
             position: fixed; top: 16px; left: 16px; z-index: 100;
             background: white; padding: 6px; border-radius: 30px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.15); display: flex; gap: 4px;
-            border: 2px solid #0d9488;
+            border: 2px solid #7c3aed;
         }
         [dir="ltr"] .lang-switch { left: auto; right: 16px; }
         .lang-btn {
@@ -33,8 +33,8 @@
             transition: all 0.3s; border: none; font-size: 0.875rem;
             background: transparent; color: #6b7280;
         }
-        .lang-btn.active { background: #0d9488; color: white; box-shadow: 0 2px 6px rgba(13,148,136,0.4); }
-        .lang-btn:hover:not(.active) { background: #f0fdfa; color: #0d9488; }
+        .lang-btn.active { background: #7c3aed; color: white; box-shadow: 0 2px 6px rgba(124,58,237,0.4); }
+        .lang-btn:hover:not(.active) { background: #f5f3ff; color: #7c3aed; }
         .shuffle-badge {
             display: inline-block;
             background: linear-gradient(135deg, #f59e0b, #ef4444);
@@ -47,7 +47,7 @@
             animation: pulse 2s infinite;
         }
     </style>
-<script src="/_aistudio-iframe.js"></script></head>
+</head>
 <body class="bg-gray-50 text-gray-800 p-4 md:p-8 min-h-screen">
 
     <div class="lang-switch no-print">
@@ -56,24 +56,24 @@
     </div>
 
     <div id="timer-container" class="max-w-4xl mx-auto mb-4 text-center no-print">
-        <div class="bg-white p-4 rounded-xl shadow-md inline-block border-2 border-teal-100">
+        <div class="bg-white p-4 rounded-xl shadow-md inline-block border-2 border-purple-100">
             <span class="text-gray-600 ml-2" data-ar="⏱️ الوقت المتبقي:" data-en="⏱️ Time Remaining:">⏱️ الوقت المتبقي:</span>
-            <span id="timer" class="text-2xl font-bold text-teal-600 font-mono">60:00</span>
+            <span id="timer" class="text-2xl font-bold text-purple-600 font-mono">60:00</span>
             <span class="shuffle-badge" data-ar="🔀 أسئلة عشوائية" data-en="🔀 Random Questions">🔀 أسئلة عشوائية</span>
         </div>
     </div>
 
     <div class="max-w-4xl mx-auto mb-6 flex flex-wrap gap-3 justify-center no-print">
-        <button onclick="toggleAnswers()" class="bg-teal-600 hover:bg-teal-700 text-white px-5 py-2 rounded-lg font-medium transition shadow cursor-pointer" data-ar="👁️ إظهار / إخفاء الإجابات" data-en="👁️ Show / Hide Answers">👁️ إظهار / إخفاء الإجابات</button>
+        <button onclick="toggleAnswers()" class="bg-purple-600 hover:bg-purple-700 text-white px-5 py-2 rounded-lg font-medium transition shadow cursor-pointer" data-ar="👁️ إظهار / إخفاء الإجابات" data-en="👁️ Show / Hide Answers">👁️ إظهار / إخفاء الإجابات</button>
         <button onclick="window.print()" class="bg-gray-800 hover:bg-gray-900 text-white px-5 py-2 rounded-lg font-medium transition shadow cursor-pointer" data-ar="🖨️ طباعة / PDF" data-en="🖨️ Print / PDF">🖨️ طباعة / PDF</button>
         <button onclick="reshuffleExam()" class="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-5 py-2 rounded-lg font-medium transition shadow cursor-pointer" data-ar="🔀 إعادة خلط الأسئلة" data-en="🔀 Reshuffle Questions">🔀 إعادة خلط الأسئلة</button>
     </div>
 
-    <header class="max-w-4xl mx-auto bg-white p-6 rounded-xl shadow-md mb-8 border-r-4 border-teal-600">
+    <header class="max-w-4xl mx-auto bg-white p-6 rounded-xl shadow-md mb-8 border-r-4 border-purple-600">
         <div class="text-center">
-            <h1 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2" data-ar="⚡ رياضيات الصف الحادي عشر متقدم" data-en="⚡ Grade 11 Advanced Mathematics">⚡ رياضيات الصف الحادي عشر متقدم</h1>
-            <h2 class="text-lg text-teal-600 font-semibold" data-ar="الدرس الرابع: أصفار الدوال كثيرة الحدود (الفصل الدراسي الأول)" data-en="Lesson 4: Zeros of Polynomial Functions (Term 1)">الدرس الرابع: أصفار الدوال كثيرة الحدود (الفصل الدراسي الأول)</h2>
-            <p class="text-sm text-gray-600 mt-2" data-ar="إيجاد الأصفار الحقيقية والمركبة لكثيرات الحدود، تطبيق نظرية الجذور الأساسية وقانون ديكارت للإشارات." data-en="Finding real and complex zeros of polynomials, applying the Fundamental Theorem of Algebra and Descartes' Rule of Signs.">إيجاد الأصفار الحقيقية والمركبة لكثيرات الحدود، تطبيق نظرية الجذور الأساسية وقانون ديكارت للإشارات.</p>
+            <h1 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2" data-ar="🧮 امتحان أصفار الدوال كثيرة الحدود" data-en="🧮 Zeros of Polynomial Functions Exam">🧮 امتحان أصفار الدوال كثيرة الحدود</h1>
+            <h2 class="text-lg text-purple-600 font-semibold" data-ar="Zeros of Polynomial Functions" data-en="Zeros of Polynomial Functions">Zeros of Polynomial Functions</h2>
+            <p class="text-sm text-gray-600 mt-2" data-ar="نظرية الصفر النسبي، اختبارات الحدود العظمى والصغرى، قاعدة ديكارت، نظرية الجبر الأساسية، والأصفار المركبة" data-en="Rational Zero Theorem, Upper/Lower Bounds, Descartes' Rule, Fundamental Theorem of Algebra, and Complex Zeros">نظرية الصفر النسبي، اختبارات الحدود العظمى والصغرى، قاعدة ديكارت، نظرية الجبر الأساسية، والأصفار المركبة</p>
             <p class="text-xs text-orange-600 mt-2 font-semibold" data-ar="⚠️ ملاحظة: يتم خلط ترتيب الأسئلة والخيارات تلقائياً مع كل تحديث للصفحة" data-en="⚠️ Note: Questions and options are randomly shuffled on every page refresh">⚠️ ملاحظة: يتم خلط ترتيب الأسئلة والخيارات تلقائياً مع كل تحديث للصفحة</p>
         </div>
         <div class="mt-4 flex flex-wrap justify-center gap-4 text-sm text-gray-600">
@@ -94,7 +94,7 @@
     <div id="results-panel" class="max-w-4xl mx-auto mt-8 bg-white p-8 rounded-2xl shadow-2xl border-t-4 border-emerald-500 hidden no-print">
         <h2 class="text-3xl font-bold text-gray-900 mb-6 text-center" data-ar="📊 نتائج الامتحان" data-en="📊 Exam Results">📊 نتائج الامتحان</h2>
         <div class="grid md:grid-cols-3 gap-4 mb-6">
-            <div class="bg-blue-50 p-4 rounded-xl text-center"><p data-ar="اسم الطالب" data-en="Student Name">اسم الطالب</p><p id="res-name" class="font-bold text-xl text-teal-700">-</p></div>
+            <div class="bg-blue-50 p-4 rounded-xl text-center"><p data-ar="اسم الطالب" data-en="Student Name">اسم الطالب</p><p id="res-name" class="font-bold text-xl text-purple-700">-</p></div>
             <div class="bg-purple-50 p-4 rounded-xl text-center"><p data-ar="التاريخ" data-en="Date">التاريخ</p><p id="res-date" class="font-bold text-xl text-purple-700">-</p></div>
             <div class="bg-emerald-50 p-4 rounded-xl text-center"><p data-ar="المجموع" data-en="Score">المجموع</p><p id="res-total" class="font-bold text-3xl text-emerald-600">0 / 100</p></div>
         </div>
@@ -107,29 +107,29 @@
             <h3 class="font-bold text-lg mb-4 text-gray-800" data-ar="📈 تفصيل الأداء حسب القسم:" data-en="📈 Performance Breakdown:">📈 تفصيل الأداء حسب القسم:</h3>
             <div class="space-y-3">
                 <div class="flex justify-between items-center">
-                    <span class="text-gray-700" data-ar="الجزء الأول: المفاهيم والقواعد الأساسية والتعريفات" data-en="Part 1: Basic Concepts, Rules, and Definitions">الجزء الأول: المفاهيم والقواعد الأساسية والتعريفات</span>
-                    <span id="sec1-score" class="font-bold text-teal-600">0/4</span>
+                    <span class="text-gray-700" data-ar="أساسيات نظرية الصفر النسبي" data-en="Basics of the Rational Zero Theorem">أساسيات نظرية الصفر النسبي</span>
+                    <span id="sec1-score" class="font-bold text-purple-600">0/4</span>
                 </div>
                 <div class="flex justify-between items-center">
-                    <span class="text-gray-700" data-ar="الجزء الثاني: العمليات الحسابية والحلول العددية الدقيقة" data-en="Part 2: Calculations and Exact Numerical Solutions">الجزء الثاني: العمليات الحسابية والحلول العددية الدقيقة</span>
-                    <span id="sec2-score" class="font-bold text-teal-600">0/4</span>
+                    <span class="text-gray-700" data-ar="خطوات إيجاد الأصفار النسبية والتعويض التركيبي" data-en="Steps for Finding Rational Zeros & Synthetic Substitution">خطوات إيجاد الأصفار النسبية والتعويض التركيبي</span>
+                    <span id="sec2-score" class="font-bold text-purple-600">0/4</span>
                 </div>
                 <div class="flex justify-between items-center">
-                    <span class="text-gray-700" data-ar="الجزء الثالث: المهارات المتقدمة والتطبيقات والمسائل" data-en="Part 3: Advanced Skills, Applications, and Problems">الجزء الثالث: المهارات المتقدمة والتطبيقات والمسائل</span>
-                    <span id="sec3-score" class="font-bold text-teal-600">0/4</span>
+                    <span class="text-gray-700" data-ar="اختبارات القيمتين العظمى والصغرى" data-en="Upper and Lower Bound Tests">اختبارات القيمتين العظمى والصغرى</span>
+                    <span id="sec3-score" class="font-bold text-purple-600">0/4</span>
                 </div>
                 <div class="flex justify-between items-center">
-                    <span class="text-gray-700" data-ar="الجزء الرابع: النمذجة الرياضية والتمثيل البياني والمسائل العملية" data-en="Part 4: Mathematical Modeling, Graphing, and Practical Problems">الجزء الرابع: النمذجة الرياضية والتمثيل البياني والمسائل العملية</span>
-                    <span id="sec4-score" class="font-bold text-teal-600">0/4</span>
+                    <span class="text-gray-700" data-ar="قاعدة ديكارت ونظرية الجبر الأساسية" data-en="Descartes' Rule & Fundamental Theorem of Algebra">قاعدة ديكارت ونظرية الجبر الأساسية</span>
+                    <span id="sec4-score" class="font-bold text-purple-600">0/4</span>
                 </div>
                 <div class="flex justify-between items-center">
-                    <span class="text-gray-700" data-ar="الجزء الخامس: مهارات التفكير العليا والتحليل والربط المنطقي" data-en="Part 5: Higher-Order Thinking, Analysis, and Logical Connections">الجزء الخامس: مهارات التفكير العليا والتحليل والربط المنطقي</span>
-                    <span id="sec5-score" class="font-bold text-teal-600">0/4</span>
+                    <span class="text-gray-700" data-ar="التطبيقات المتقدمة والأصفار المركبة" data-en="Advanced Applications & Complex Zeros">التطبيقات المتقدمة والأصفار المركبة</span>
+                    <span id="sec5-score" class="font-bold text-purple-600">0/4</span>
                 </div>
             </div>
         </div>
         <div class="text-center mb-6">
-            <button id="sendEmailBtn" onclick="sendResultsToEmail()" class="bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-700 hover:to-cyan-700 text-white text-lg px-8 py-3 rounded-xl font-bold shadow-xl transition transform hover:scale-105 cursor-pointer" data-ar="📧 إرسال النتائج للمعلم" data-en="📧 Send Results to Teacher">📧 إرسال النتائج للمعلم</button>
+            <button id="sendEmailBtn" onclick="sendResultsToEmail()" class="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white text-lg px-8 py-3 rounded-xl font-bold shadow-xl transition transform hover:scale-105 cursor-pointer" data-ar="📧 إرسال النتائج للمعلم" data-en="📧 Send Results to Teacher">📧 إرسال النتائج للمعلم</button>
             <p id="emailStatus" class="text-sm mt-2 text-center font-medium"></p>
         </div>
         <div class="flex gap-3 justify-center">
@@ -138,10 +138,11 @@
     </div>
 
     <footer class="max-w-4xl mx-auto mt-10 mb-8 text-center text-gray-500 text-sm no-print">
-        © <span data-ar="رياضيات الصف 11 متقدم | الدرس الرابع: أصفار الدوال كثيرة الحدود" data-en="Grade 11 Advanced Math | Lesson 4: Zeros of Polynomial Functions">رياضيات الصف 11 متقدم | الدرس الرابع: أصفار الدوال كثيرة الحدود</span> | Platform 4U Education
+        © <span data-ar="Zeros of Polynomial Functions" data-en="Zeros of Polynomial Functions">Zeros of Polynomial Functions</span> | Mr. Mohammed Hesham
     </footer>
 
 <script>
+// ==================== EmailJS Settings ====================
 const PUBLIC_KEY = "Rb3Lq8tXaFmc5YHUH";
 const SERVICE_ID = "service_w15m64i";
 const TEMPLATE_ID = "template_5b0u2tq";
@@ -150,629 +151,254 @@ const TARGET_EMAIL = "mohammedhesham872@gmail.com";
 emailjs.init(PUBLIC_KEY);
 
 const originalExamData = {
-    "sections": [
+    sections: [
         {
-            "id": "sec1",
-            "title": {
-                "ar": "🔹 الجزء الأول: المفاهيم والقواعد الأساسية والتعريفات",
-                "en": "🔹 Part 1: Basic Concepts, Rules, and Definitions"
-            },
-            "questions": [
+            id: 'sec1',
+            title: { ar: '🔹 الجزء الأول: أساسيات نظرية الصفر النسبي', en: '🔹 Part 1: Basics of the Rational Zero Theorem' },
+            questions: [
                 {
-                    "q": {
-                        "ar": "سؤال تفاعلي 1: في درس كثيرات الحدود والدوال النسبية والمتباينات، حل المسألة التالية المتعلقة بـ الجذور الحقيقية والمركبة في الحقل الحقيقي؟",
-                        "en": "Interactive Question 1: In the lesson of polynomials, rational functions, and inequalities, solve the following problem related to الجذور الحقيقية والمركبة in the real field?"
-                    },
-                    "options": [
-                        {
-                            "ar": "الخيار أ) الحل النموذجي والنتيجة الدقيقة للمسألة الجبرية 1",
-                            "en": "Option A) The model solution and exact result of algebraic problem 1"
-                        },
-                        {
-                            "ar": "الخيار ب) إجابة بديلة تمثل خطأ شائعاً في التحليل الرياضي 1",
-                            "en": "Option B) Alternative answer representing a common error in mathematical analysis 1"
-                        },
-                        {
-                            "ar": "الخيار ج) حل تقريبي غير مكتمل يعبر عن دالة فرعية 1",
-                            "en": "Option C) Incomplete approximate solution expressing a sub-function 1"
-                        },
-                        {
-                            "ar": "الخيار د) قيمة منعدمة أو لا حرج لها في النمذجة 1",
-                            "en": "Option D) Null or non-critical value in modeling 1"
-                        }
+                    q: { ar: 'ماذا تنص نظرية الصفر النسبي؟', en: 'What does the Rational Zero Theorem state?' },
+                    options: [
+                        { ar: 'لكل صفر نسبي p/q لدالة كثيرة حدود بمعاملات صحيحة، p عامل صحيح للحد الثابت a₀ و q عامل صحيح لمعامل الحد الرئيس aₙ', en: 'For every rational zero p/q of a polynomial with integer coefficients, p is an integer factor of a₀ and q is an integer factor of aₙ' },
+                        { ar: 'p عامل للحد الرئيس و q عامل للحد الثابت', en: 'p is a factor of the leading coefficient and q is a factor of the constant term' },
+                        { ar: 'p و q يجب أن يكونا متساويين دائماً', en: 'p and q must always be equal' },
+                        { ar: 'لا توجد علاقة بين p و q ومعاملات الدالة', en: 'There is no relationship between p, q, and the coefficients' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "الخطوات والحل المعتمد يتطلب تطبيق الخصائص المباشرة لـ الجذور الحقيقية والمركبة للوصول للقيمة الصحيحة بشكل كامل ودقيق.",
-                        "en": "Steps and certified solution require applying direct properties of الجذور الحقيقية والمركبة to arrive at the correct value completely and accurately."
-                    }
+                    correct: 0,
+                    answer: { ar: 'تنص النظرية على أن كل صفر نسبي p/q يحقق: p عامل صحيح للحد الثابت a₀، وq عامل صحيح لمعامل الحد الرئيس aₙ', en: 'The theorem states that every rational zero p/q satisfies: p is an integer factor of a₀, and q is an integer factor of aₙ' }
                 },
                 {
-                    "q": {
-                        "ar": "سؤال تفاعلي 2: في درس كثيرات الحدود والدوال النسبية والمتباينات، حل المسألة التالية المتعلقة بـ الجذور الحقيقية والمركبة في الحقل الحقيقي؟",
-                        "en": "Interactive Question 2: In the lesson of polynomials, rational functions, and inequalities, solve the following problem related to الجذور الحقيقية والمركبة in the real field?"
-                    },
-                    "options": [
-                        {
-                            "ar": "الخيار أ) الحل النموذجي والنتيجة الدقيقة للمسألة الجبرية 2",
-                            "en": "Option A) The model solution and exact result of algebraic problem 2"
-                        },
-                        {
-                            "ar": "الخيار ب) إجابة بديلة تمثل خطأ شائعاً في التحليل الرياضي 2",
-                            "en": "Option B) Alternative answer representing a common error in mathematical analysis 2"
-                        },
-                        {
-                            "ar": "الخيار ج) حل تقريبي غير مكتمل يعبر عن دالة فرعية 2",
-                            "en": "Option C) Incomplete approximate solution expressing a sub-function 2"
-                        },
-                        {
-                            "ar": "الخيار د) قيمة منعدمة أو لا حرج لها في النمذجة 2",
-                            "en": "Option D) Null or non-critical value in modeling 2"
-                        }
+                    q: { ar: 'إذا كان معامل الحد الرئيس لدالة كثيرة حدود يساوي 1، فإن الأصفار النسبية المحتملة هي:', en: 'If the leading coefficient of a polynomial equals 1, the possible rational zeros are:' },
+                    options: [
+                        { ar: 'عوامل الحد الثابت فقط', en: 'Factors of the constant term only' },
+                        { ar: 'عوامل الحد الرئيس فقط', en: 'Factors of the leading term only' },
+                        { ar: 'حاصل ضرب الحد الثابت في الحد الرئيس', en: 'The product of the constant and leading terms' },
+                        { ar: 'لا يمكن تحديدها إطلاقاً', en: 'They cannot be determined at all' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "الخطوات والحل المعتمد يتطلب تطبيق الخصائص المباشرة لـ الجذور الحقيقية والمركبة للوصول للقيمة الصحيحة بشكل كامل ودقيق.",
-                        "en": "Steps and certified solution require applying direct properties of الجذور الحقيقية والمركبة to arrive at the correct value completely and accurately."
-                    }
+                    correct: 0,
+                    answer: { ar: 'وفق النتيجة المترتبة على النظرية، إذا كان aₙ = 1 فأي صفر نسبي يُعد من عوامل الأعداد الصحيحة للحد الثابت a₀', en: 'According to the corollary, if aₙ = 1, any rational zero is among the integer factors of the constant term a₀' }
                 },
                 {
-                    "q": {
-                        "ar": "سؤال تفاعلي 3: في درس كثيرات الحدود والدوال النسبية والمتباينات، حل المسألة التالية المتعلقة بـ الجذور الحقيقية والمركبة في الحقل الحقيقي؟",
-                        "en": "Interactive Question 3: In the lesson of polynomials, rational functions, and inequalities, solve the following problem related to الجذور الحقيقية والمركبة in the real field?"
-                    },
-                    "options": [
-                        {
-                            "ar": "الخيار أ) الحل النموذجي والنتيجة الدقيقة للمسألة الجبرية 3",
-                            "en": "Option A) The model solution and exact result of algebraic problem 3"
-                        },
-                        {
-                            "ar": "الخيار ب) إجابة بديلة تمثل خطأ شائعاً في التحليل الرياضي 3",
-                            "en": "Option B) Alternative answer representing a common error in mathematical analysis 3"
-                        },
-                        {
-                            "ar": "الخيار ج) حل تقريبي غير مكتمل يعبر عن دالة فرعية 3",
-                            "en": "Option C) Incomplete approximate solution expressing a sub-function 3"
-                        },
-                        {
-                            "ar": "الخيار د) قيمة منعدمة أو لا حرج لها في النمذجة 3",
-                            "en": "Option D) Null or non-critical value in modeling 3"
-                        }
+                    q: { ar: 'ما المقصود بالأصفار غير النسبية للدالة؟', en: 'What is meant by the irrational zeros of a function?' },
+                    options: [
+                        { ar: 'أصفار لا يمكن كتابتها على صورة كسر p/q، مثل الجذور التربيعية غير الكاملة', en: 'Zeros that cannot be written as a fraction p/q, such as non-perfect square roots' },
+                        { ar: 'الأصفار الصحيحة الموجبة فقط', en: 'Only positive integer zeros' },
+                        { ar: 'الأصفار السالبة فقط', en: 'Only negative zeros' },
+                        { ar: 'الأصفار المركبة فقط', en: 'Only complex zeros' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "الخطوات والحل المعتمد يتطلب تطبيق الخصائص المباشرة لـ الجذور الحقيقية والمركبة للوصول للقيمة الصحيحة بشكل كامل ودقيق.",
-                        "en": "Steps and certified solution require applying direct properties of الجذور الحقيقية والمركبة to arrive at the correct value completely and accurately."
-                    }
+                    correct: 0,
+                    answer: { ar: 'الأصفار غير النسبية هي أصفار حقيقية لا يمكن التعبير عنها بصيغة p/q، مثل g(x)=x²-5 التي أصفارها ±√5', en: 'Irrational zeros are real zeros that cannot be expressed as p/q, such as g(x)=x²-5 whose zeros are ±√5' }
                 },
                 {
-                    "q": {
-                        "ar": "سؤال تفاعلي 4: في درس كثيرات الحدود والدوال النسبية والمتباينات، حل المسألة التالية المتعلقة بـ الجذور الحقيقية والمركبة في الحقل الحقيقي؟",
-                        "en": "Interactive Question 4: In the lesson of polynomials, rational functions, and inequalities, solve the following problem related to الجذور الحقيقية والمركبة in the real field?"
-                    },
-                    "options": [
-                        {
-                            "ar": "الخيار أ) الحل النموذجي والنتيجة الدقيقة للمسألة الجبرية 4",
-                            "en": "Option A) The model solution and exact result of algebraic problem 4"
-                        },
-                        {
-                            "ar": "الخيار ب) إجابة بديلة تمثل خطأ شائعاً في التحليل الرياضي 4",
-                            "en": "Option B) Alternative answer representing a common error in mathematical analysis 4"
-                        },
-                        {
-                            "ar": "الخيار ج) حل تقريبي غير مكتمل يعبر عن دالة فرعية 4",
-                            "en": "Option C) Incomplete approximate solution expressing a sub-function 4"
-                        },
-                        {
-                            "ar": "الخيار د) قيمة منعدمة أو لا حرج لها في النمذجة 4",
-                            "en": "Option D) Null or non-critical value in modeling 4"
-                        }
+                    q: { ar: 'كم عدد الأصفار الحقيقية التي يمكن أن تحتويها دالة كثيرة حدود من الدرجة n؟', en: 'How many real zeros can a polynomial function of degree n have?' },
+                    options: [
+                        { ar: 'على الأكثر n من الأصفار الحقيقية', en: 'At most n real zeros' },
+                        { ar: 'بالضبط n صفر حقيقي دائماً', en: 'Always exactly n real zeros' },
+                        { ar: 'n+1 صفر حقيقي', en: 'n+1 real zeros' },
+                        { ar: 'صفر حقيقي واحد فقط دائماً', en: 'Always only one real zero' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "الخطوات والحل المعتمد يتطلب تطبيق الخصائص المباشرة لـ الجذور الحقيقية والمركبة للوصول للقيمة الصحيحة بشكل كامل ودقيق.",
-                        "en": "Steps and certified solution require applying direct properties of الجذور الحقيقية والمركبة to arrive at the correct value completely and accurately."
-                    }
+                    correct: 0,
+                    answer: { ar: 'دالة كثيرة الحدود من الدرجة n يمكن أن تحتوي على n من الأصفار الحقيقية على الأكثر، وقد تكون نسبية أو غير نسبية', en: 'A degree-n polynomial function can have at most n real zeros, which may be rational or irrational' }
                 }
             ]
         },
         {
-            "id": "sec2",
-            "title": {
-                "ar": "🔹 الجزء الثاني: العمليات الحسابية والحلول العددية الدقيقة",
-                "en": "🔹 Part 2: Calculations and Exact Numerical Solutions"
-            },
-            "questions": [
+            id: 'sec2',
+            title: { ar: '🔹 الجزء الثاني: خطوات إيجاد الأصفار النسبية والتعويض التركيبي', en: '🔹 Part 2: Steps for Finding Rational Zeros & Synthetic Substitution' },
+            questions: [
                 {
-                    "q": {
-                        "ar": "سؤال تفاعلي 5: في درس كثيرات الحدود والدوال النسبية والمتباينات، حل المسألة التالية المتعلقة بـ القانون العام والمميز في الحقل الحقيقي؟",
-                        "en": "Interactive Question 5: In the lesson of polynomials, rational functions, and inequalities, solve the following problem related to القانون العام والمميز in the real field?"
-                    },
-                    "options": [
-                        {
-                            "ar": "الخيار أ) الحل النموذجي والنتيجة الدقيقة للمسألة الجبرية 5",
-                            "en": "Option A) The model solution and exact result of algebraic problem 5"
-                        },
-                        {
-                            "ar": "الخيار ب) إجابة بديلة تمثل خطأ شائعاً في التحليل الرياضي 5",
-                            "en": "Option B) Alternative answer representing a common error in mathematical analysis 5"
-                        },
-                        {
-                            "ar": "الخيار ج) حل تقريبي غير مكتمل يعبر عن دالة فرعية 5",
-                            "en": "Option C) Incomplete approximate solution expressing a sub-function 5"
-                        },
-                        {
-                            "ar": "الخيار د) قيمة منعدمة أو لا حرج لها في النمذجة 5",
-                            "en": "Option D) Null or non-critical value in modeling 5"
-                        }
+                    q: { ar: 'ما هي الخطوة الأولى لإيجاد الأصفار النسبية المحتملة لدالة كثيرة حدود؟', en: 'What is the first step in finding the possible rational zeros of a polynomial?' },
+                    options: [
+                        { ar: 'تحديد عوامل الحد الثابت وعوامل معامل الحد الرئيس', en: 'Identify the factors of the constant term and the factors of the leading coefficient' },
+                        { ar: 'رسم الدالة بيانياً فقط دون حسابات', en: 'Graph the function only without calculations' },
+                        { ar: 'اشتقاق الدالة', en: 'Differentiate the function' },
+                        { ar: 'قسمة الدالة على نفسها', en: 'Divide the function by itself' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "الخطوات والحل المعتمد يتطلب تطبيق الخصائص المباشرة لـ القانون العام والمميز للوصول للقيمة الصحيحة بشكل كامل ودقيق.",
-                        "en": "Steps and certified solution require applying direct properties of القانون العام والمميز to arrive at the correct value completely and accurately."
-                    }
+                    correct: 0,
+                    answer: { ar: 'الخطوة الأولى هي تحديد الأصفار النسبية الممكنة عن طريق عوامل الحد الثابت وعوامل معامل الحد الرئيس', en: 'The first step is determining the possible rational zeros using the factors of the constant term and the leading coefficient' }
                 },
                 {
-                    "q": {
-                        "ar": "سؤال تفاعلي 6: في درس كثيرات الحدود والدوال النسبية والمتباينات، حل المسألة التالية المتعلقة بـ القانون العام والمميز في الحقل الحقيقي؟",
-                        "en": "Interactive Question 6: In the lesson of polynomials, rational functions, and inequalities, solve the following problem related to القانون العام والمميز in the real field?"
-                    },
-                    "options": [
-                        {
-                            "ar": "الخيار أ) الحل النموذجي والنتيجة الدقيقة للمسألة الجبرية 6",
-                            "en": "Option A) The model solution and exact result of algebraic problem 6"
-                        },
-                        {
-                            "ar": "الخيار ب) إجابة بديلة تمثل خطأ شائعاً في التحليل الرياضي 6",
-                            "en": "Option B) Alternative answer representing a common error in mathematical analysis 6"
-                        },
-                        {
-                            "ar": "الخيار ج) حل تقريبي غير مكتمل يعبر عن دالة فرعية 6",
-                            "en": "Option C) Incomplete approximate solution expressing a sub-function 6"
-                        },
-                        {
-                            "ar": "الخيار د) قيمة منعدمة أو لا حرج لها في النمذجة 6",
-                            "en": "Option D) Null or non-critical value in modeling 6"
-                        }
+                    q: { ar: 'كيف تُستخدم القسمة التركيبية للتحقق من أن رقماً ما هو صفر للدالة؟', en: 'How is synthetic division used to verify that a number is a zero of the function?' },
+                    options: [
+                        { ar: 'إذا كان الباقي الناتج يساوي صفراً فإن الرقم يمثل صفراً للدالة', en: 'If the resulting remainder equals zero, the number is a zero of the function' },
+                        { ar: 'إذا كان الخارج يساوي صفراً', en: 'If the quotient equals zero' },
+                        { ar: 'إذا كانت جميع المعاملات موجبة', en: 'If all the coefficients are positive' },
+                        { ar: 'لا علاقة للقسمة التركيبية بإيجاد الأصفار', en: 'Synthetic division has no relation to finding zeros' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "الخطوات والحل المعتمد يتطلب تطبيق الخصائص المباشرة لـ القانون العام والمميز للوصول للقيمة الصحيحة بشكل كامل ودقيق.",
-                        "en": "Steps and certified solution require applying direct properties of القانون العام والمميز to arrive at the correct value completely and accurately."
-                    }
+                    correct: 0,
+                    answer: { ar: 'باستخدام التعويض التركيبي، إذا كان الباقي = 0 فإن القيمة المختبرة تُعد صفراً فعلياً للدالة', en: 'Using synthetic substitution, if the remainder = 0, the tested value is an actual zero of the function' }
                 },
                 {
-                    "q": {
-                        "ar": "سؤال تفاعلي 7: في درس كثيرات الحدود والدوال النسبية والمتباينات، حل المسألة التالية المتعلقة بـ القانون العام والمميز في الحقل الحقيقي؟",
-                        "en": "Interactive Question 7: In the lesson of polynomials, rational functions, and inequalities, solve the following problem related to القانون العام والمميز in the real field?"
-                    },
-                    "options": [
-                        {
-                            "ar": "الخيار أ) الحل النموذجي والنتيجة الدقيقة للمسألة الجبرية 7",
-                            "en": "Option A) The model solution and exact result of algebraic problem 7"
-                        },
-                        {
-                            "ar": "الخيار ب) إجابة بديلة تمثل خطأ شائعاً في التحليل الرياضي 7",
-                            "en": "Option B) Alternative answer representing a common error in mathematical analysis 7"
-                        },
-                        {
-                            "ar": "الخيار ج) حل تقريبي غير مكتمل يعبر عن دالة فرعية 7",
-                            "en": "Option C) Incomplete approximate solution expressing a sub-function 7"
-                        },
-                        {
-                            "ar": "الخيار د) قيمة منعدمة أو لا حرج لها في النمذجة 7",
-                            "en": "Option D) Null or non-critical value in modeling 7"
-                        }
+                    q: { ar: 'عند تحليل g(x) = x⁴ + 4x³ - 12x - 9 بمعرفة أن -1 و -3 صفران نسبيان، ماذا نستنتج عن العامل المتبقي (x² - 3)؟', en: 'When factoring g(x) = x⁴ + 4x³ - 12x - 9 knowing -1 and -3 are rational zeros, what do we conclude about the remaining factor (x² - 3)?' },
+                    options: [
+                        { ar: 'لا ينتج عنه أصفار نسبية، بل صفران غير نسبيين هما ±√3', en: 'It produces no rational zeros, but two irrational zeros ±√3' },
+                        { ar: 'ينتج عنه صفران نسبيان آخران', en: 'It produces two more rational zeros' },
+                        { ar: 'لا يمكن تحليله إطلاقاً', en: 'It cannot be factored at all' },
+                        { ar: 'يساوي صفراً في كل نقطة', en: 'It equals zero everywhere' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "الخطوات والحل المعتمد يتطلب تطبيق الخصائص المباشرة لـ القانون العام والمميز للوصول للقيمة الصحيحة بشكل كامل ودقيق.",
-                        "en": "Steps and certified solution require applying direct properties of القانون العام والمميز to arrive at the correct value completely and accurately."
-                    }
+                    correct: 0,
+                    answer: { ar: 'العامل (x²-3) لا ينتج عنه أصفار نسبية؛ تطبيق نظرية الأصفار النسبية يوضح أن هذين الصفرين غير نسبيين وهما ±√3', en: 'The factor (x²-3) yields no rational zeros; applying the Rational Zero Theorem shows these two zeros are irrational, ±√3' }
                 },
                 {
-                    "q": {
-                        "ar": "سؤال تفاعلي 8: في درس كثيرات الحدود والدوال النسبية والمتباينات، حل المسألة التالية المتعلقة بـ القانون العام والمميز في الحقل الحقيقي؟",
-                        "en": "Interactive Question 8: In the lesson of polynomials, rational functions, and inequalities, solve the following problem related to القانون العام والمميز in the real field?"
-                    },
-                    "options": [
-                        {
-                            "ar": "الخيار أ) الحل النموذجي والنتيجة الدقيقة للمسألة الجبرية 8",
-                            "en": "Option A) The model solution and exact result of algebraic problem 8"
-                        },
-                        {
-                            "ar": "الخيار ب) إجابة بديلة تمثل خطأ شائعاً في التحليل الرياضي 8",
-                            "en": "Option B) Alternative answer representing a common error in mathematical analysis 8"
-                        },
-                        {
-                            "ar": "الخيار ج) حل تقريبي غير مكتمل يعبر عن دالة فرعية 8",
-                            "en": "Option C) Incomplete approximate solution expressing a sub-function 8"
-                        },
-                        {
-                            "ar": "الخيار د) قيمة منعدمة أو لا حرج لها في النمذجة 8",
-                            "en": "Option D) Null or non-critical value in modeling 8"
-                        }
+                    q: { ar: 'عندما لا يساوي معامل الحد الرئيس 1، ماذا يحدث لقائمة الأصفار النسبية الممكنة؟', en: 'When the leading coefficient is not 1, what happens to the list of possible rational zeros?' },
+                    options: [
+                        { ar: 'تزيد بدرجة كبيرة لأنها تشمل كسوراً متعددة من صورة p/q', en: 'It increases greatly since it includes many fractions of the form p/q' },
+                        { ar: 'تقل عن حالة كون المعامل يساوي 1', en: 'It decreases compared to when the coefficient equals 1' },
+                        { ar: 'تبقى كما هي دون أي تغيير', en: 'It remains unchanged' },
+                        { ar: 'تصبح قائمة فارغة', en: 'It becomes an empty list' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "الخطوات والحل المعتمد يتطلب تطبيق الخصائص المباشرة لـ القانون العام والمميز للوصول للقيمة الصحيحة بشكل كامل ودقيق.",
-                        "en": "Steps and certified solution require applying direct properties of القانون العام والمميز to arrive at the correct value completely and accurately."
-                    }
+                    correct: 0,
+                    answer: { ar: 'عندما لا يساوي معامل الحد الرئيس 1، يمكن أن تزيد قائمة الأصفار النسبية الممكنة بدرجة كبيرة نتيجة تعدد قيم p/q', en: 'When the leading coefficient is not 1, the list of possible rational zeros can grow significantly due to the many possible p/q values' }
                 }
             ]
         },
         {
-            "id": "sec3",
-            "title": {
-                "ar": "🔹 الجزء الثالث: المهارات المتقدمة والتطبيقات والمسائل",
-                "en": "🔹 Part 3: Advanced Skills, Applications, and Problems"
-            },
-            "questions": [
+            id: 'sec3',
+            title: { ar: '🔹 الجزء الثالث: اختبارات القيمتين العظمى والصغرى', en: '🔹 Part 3: Upper and Lower Bound Tests' },
+            questions: [
                 {
-                    "q": {
-                        "ar": "سؤال تفاعلي 9: في درس كثيرات الحدود والدوال النسبية والمتباينات، حل المسألة التالية المتعلقة بـ نظرية الجذور الأساسية في الحقل الحقيقي؟",
-                        "en": "Interactive Question 9: In the lesson of polynomials, rational functions, and inequalities, solve the following problem related to نظرية الجذور الأساسية in the real field?"
-                    },
-                    "options": [
-                        {
-                            "ar": "الخيار أ) الحل النموذجي والنتيجة الدقيقة للمسألة الجبرية 9",
-                            "en": "Option A) The model solution and exact result of algebraic problem 9"
-                        },
-                        {
-                            "ar": "الخيار ب) إجابة بديلة تمثل خطأ شائعاً في التحليل الرياضي 9",
-                            "en": "Option B) Alternative answer representing a common error in mathematical analysis 9"
-                        },
-                        {
-                            "ar": "الخيار ج) حل تقريبي غير مكتمل يعبر عن دالة فرعية 9",
-                            "en": "Option C) Incomplete approximate solution expressing a sub-function 9"
-                        },
-                        {
-                            "ar": "الخيار د) قيمة منعدمة أو لا حرج لها في النمذجة 9",
-                            "en": "Option D) Null or non-critical value in modeling 9"
-                        }
+                    q: { ar: 'ما تعريف القيمة الصغرى لأصفار دالة كثيرة الحدود f؟', en: 'What is the definition of the lower bound for the zeros of a polynomial function f?' },
+                    options: [
+                        { ar: 'العدد الحقيقي a بحيث f(x) ≠ 0 لكل x أقل من a', en: 'The real number a such that f(x) ≠ 0 for every x less than a' },
+                        { ar: 'أصغر معامل في الدالة', en: 'The smallest coefficient in the function' },
+                        { ar: 'قيمة الدالة عند الصفر', en: 'The value of the function at zero' },
+                        { ar: 'أصغر أس في الدالة', en: 'The smallest exponent in the function' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "الخطوات والحل المعتمد يتطلب تطبيق الخصائص المباشرة لـ نظرية الجذور الأساسية للوصول للقيمة الصحيحة بشكل كامل ودقيق.",
-                        "en": "Steps and certified solution require applying direct properties of نظرية الجذور الأساسية to arrive at the correct value completely and accurately."
-                    }
+                    correct: 0,
+                    answer: { ar: 'القيمة الصغرى a هي العدد الحقيقي الذي عنده f(x) ≠ 0 لكل x أصغر من a، وبالمثل تُعرَّف القيمة العظمى b', en: 'The lower bound a is the real number where f(x) ≠ 0 for every x less than a; the upper bound b is defined similarly' }
                 },
                 {
-                    "q": {
-                        "ar": "سؤال تفاعلي 10: في درس كثيرات الحدود والدوال النسبية والمتباينات، حل المسألة التالية المتعلقة بـ نظرية الجذور الأساسية في الحقل الحقيقي؟",
-                        "en": "Interactive Question 10: In the lesson of polynomials, rational functions, and inequalities, solve the following problem related to نظرية الجذور الأساسية in the real field?"
-                    },
-                    "options": [
-                        {
-                            "ar": "الخيار أ) الحل النموذجي والنتيجة الدقيقة للمسألة الجبرية 10",
-                            "en": "Option A) The model solution and exact result of algebraic problem 10"
-                        },
-                        {
-                            "ar": "الخيار ب) إجابة بديلة تمثل خطأ شائعاً في التحليل الرياضي 10",
-                            "en": "Option B) Alternative answer representing a common error in mathematical analysis 10"
-                        },
-                        {
-                            "ar": "الخيار ج) حل تقريبي غير مكتمل يعبر عن دالة فرعية 10",
-                            "en": "Option C) Incomplete approximate solution expressing a sub-function 10"
-                        },
-                        {
-                            "ar": "الخيار د) قيمة منعدمة أو لا حرج لها في النمذجة 10",
-                            "en": "Option D) Null or non-critical value in modeling 10"
-                        }
+                    q: { ar: 'في اختبار القيمة العظمى باستخدام القسمة التركيبية على x - c، متى تكون c قيمة عظمى؟', en: 'In the upper bound test using synthetic division by x - c, when is c an upper bound?' },
+                    options: [
+                        { ar: 'عندما تكون جميع القيم في السطر الأخير غير سالبة وc ≥ 0', en: 'When all values in the last row are non-negative and c ≥ 0' },
+                        { ar: 'عندما تكون جميع القيم سالبة', en: 'When all values are negative' },
+                        { ar: 'عندما يكون الباقي سالباً', en: 'When the remainder is negative' },
+                        { ar: 'بغض النظر عن إشارة القيم', en: 'Regardless of the sign of the values' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "الخطوات والحل المعتمد يتطلب تطبيق الخصائص المباشرة لـ نظرية الجذور الأساسية للوصول للقيمة الصحيحة بشكل كامل ودقيق.",
-                        "en": "Steps and certified solution require applying direct properties of نظرية الجذور الأساسية to arrive at the correct value completely and accurately."
-                    }
+                    correct: 0,
+                    answer: { ar: 'إذا كان c ≥ 0 وكل عدد في آخر سطر بالقسمة غير سالب، فإن c تُعد قيمة عظمى لأصفار الدالة f', en: 'If c ≥ 0 and every number in the last row of the division is non-negative, then c is an upper bound for the zeros of f' }
                 },
                 {
-                    "q": {
-                        "ar": "سؤال تفاعلي 11: في درس كثيرات الحدود والدوال النسبية والمتباينات، حل المسألة التالية المتعلقة بـ نظرية الجذور الأساسية في الحقل الحقيقي؟",
-                        "en": "Interactive Question 11: In the lesson of polynomials, rational functions, and inequalities, solve the following problem related to نظرية الجذور الأساسية in the real field?"
-                    },
-                    "options": [
-                        {
-                            "ar": "الخيار أ) الحل النموذجي والنتيجة الدقيقة للمسألة الجبرية 11",
-                            "en": "Option A) The model solution and exact result of algebraic problem 11"
-                        },
-                        {
-                            "ar": "الخيار ب) إجابة بديلة تمثل خطأ شائعاً في التحليل الرياضي 11",
-                            "en": "Option B) Alternative answer representing a common error in mathematical analysis 11"
-                        },
-                        {
-                            "ar": "الخيار ج) حل تقريبي غير مكتمل يعبر عن دالة فرعية 11",
-                            "en": "Option C) Incomplete approximate solution expressing a sub-function 11"
-                        },
-                        {
-                            "ar": "الخيار د) قيمة منعدمة أو لا حرج لها في النمذجة 11",
-                            "en": "Option D) Null or non-critical value in modeling 11"
-                        }
+                    q: { ar: 'متى تكون c قيمة صغرى لأصفار الدالة f حسب اختبار القيمة الصغرى؟', en: 'When is c a lower bound for the zeros of f according to the lower bound test?' },
+                    options: [
+                        { ar: 'عندما تتبادل الإشارات في السطر الأخير من القسمة التركيبية وc ≤ 0', en: 'When the signs alternate in the last row of synthetic division and c ≤ 0' },
+                        { ar: 'عندما تكون كل القيم موجبة', en: 'When all values are positive' },
+                        { ar: 'عندما يكون c عدداً كسرياً', en: 'When c is a fraction' },
+                        { ar: 'لا علاقة لإشارات السطر الأخير بذلك', en: 'The signs of the last row are irrelevant' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "الخطوات والحل المعتمد يتطلب تطبيق الخصائص المباشرة لـ نظرية الجذور الأساسية للوصول للقيمة الصحيحة بشكل كامل ودقيق.",
-                        "en": "Steps and certified solution require applying direct properties of نظرية الجذور الأساسية to arrive at the correct value completely and accurately."
-                    }
+                    correct: 0,
+                    answer: { ar: 'إذا كان c ≤ 0 وكل عدد في آخر سطر بالقسمة يتبادل بين غير سالب وغير موجب، فإن c قيمة صغرى لأصفار الدالة f', en: 'If c ≤ 0 and every number in the last row alternates between non-negative and non-positive, then c is a lower bound for the zeros of f' }
                 },
                 {
-                    "q": {
-                        "ar": "سؤال تفاعلي 12: في درس كثيرات الحدود والدوال النسبية والمتباينات، حل المسألة التالية المتعلقة بـ نظرية الجذور الأساسية في الحقل الحقيقي؟",
-                        "en": "Interactive Question 12: In the lesson of polynomials, rational functions, and inequalities, solve the following problem related to نظرية الجذور الأساسية in the real field?"
-                    },
-                    "options": [
-                        {
-                            "ar": "الخيار أ) الحل النموذجي والنتيجة الدقيقة للمسألة الجبرية 12",
-                            "en": "Option A) The model solution and exact result of algebraic problem 12"
-                        },
-                        {
-                            "ar": "الخيار ب) إجابة بديلة تمثل خطأ شائعاً في التحليل الرياضي 12",
-                            "en": "Option B) Alternative answer representing a common error in mathematical analysis 12"
-                        },
-                        {
-                            "ar": "الخيار ج) حل تقريبي غير مكتمل يعبر عن دالة فرعية 12",
-                            "en": "Option C) Incomplete approximate solution expressing a sub-function 12"
-                        },
-                        {
-                            "ar": "الخيار د) قيمة منعدمة أو لا حرج لها في النمذجة 12",
-                            "en": "Option D) Null or non-critical value in modeling 12"
-                        }
+                    q: { ar: 'ما هي الخطوات المتبعة للاستفادة من اختبارات القيمة العظمى والصغرى؟', en: 'What are the steps for applying the upper and lower bound tests?' },
+                    options: [
+                        { ar: 'تمثيل الدالة بيانياً لتحديد فترة، ثم التحقق بالتعويض التركيبي، ثم استخدام نظرية الصفر النسبي', en: 'Graph the function to locate an interval, verify with synthetic substitution, then apply the Rational Zero Theorem' },
+                        { ar: 'اشتقاق الدالة فقط', en: 'Differentiate the function only' },
+                        { ar: 'حساب محددة المصفوفة فقط', en: 'Compute the matrix determinant only' },
+                        { ar: 'تكامل الدالة', en: 'Integrate the function' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "الخطوات والحل المعتمد يتطلب تطبيق الخصائص المباشرة لـ نظرية الجذور الأساسية للوصول للقيمة الصحيحة بشكل كامل ودقيق.",
-                        "en": "Steps and certified solution require applying direct properties of نظرية الجذور الأساسية to arrive at the correct value completely and accurately."
-                    }
+                    correct: 0,
+                    answer: { ar: 'الخطوات: تمثيل الدالة بيانياً لتحديد فترة توجد فيها الأصفار، التأكد من القيمتين بالتعويض التركيبي، ثم استخدام نظرية الصفر النسبي لإيجاد الأصفار', en: 'Steps: graph the function to find an interval containing the zeros, confirm the bounds with synthetic substitution, then use the Rational Zero Theorem to find all zeros' }
                 }
             ]
         },
         {
-            "id": "sec4",
-            "title": {
-                "ar": "🔹 الجزء الرابع: النمذجة الرياضية والتمثيل البياني والمسائل العملية",
-                "en": "🔹 Part 4: Mathematical Modeling, Graphing, and Practical Problems"
-            },
-            "questions": [
+            id: 'sec4',
+            title: { ar: '🔹 الجزء الرابع: قاعدة ديكارت للإشارات ونظرية الجبر الأساسية', en: "🔹 Part 4: Descartes' Rule of Signs & Fundamental Theorem of Algebra" },
+            questions: [
                 {
-                    "q": {
-                        "ar": "سؤال تفاعلي 13: في درس كثيرات الحدود والدوال النسبية والمتباينات، حل المسألة التالية المتعلقة بـ قانون ديكارت للإشارات في الحقل الحقيقي؟",
-                        "en": "Interactive Question 13: In the lesson of polynomials, rational functions, and inequalities, solve the following problem related to قانون ديكارت للإشارات in the real field?"
-                    },
-                    "options": [
-                        {
-                            "ar": "الخيار أ) الحل النموذجي والنتيجة الدقيقة للمسألة الجبرية 13",
-                            "en": "Option A) The model solution and exact result of algebraic problem 13"
-                        },
-                        {
-                            "ar": "الخيار ب) إجابة بديلة تمثل خطأ شائعاً في التحليل الرياضي 13",
-                            "en": "Option B) Alternative answer representing a common error in mathematical analysis 13"
-                        },
-                        {
-                            "ar": "الخيار ج) حل تقريبي غير مكتمل يعبر عن دالة فرعية 13",
-                            "en": "Option C) Incomplete approximate solution expressing a sub-function 13"
-                        },
-                        {
-                            "ar": "الخيار د) قيمة منعدمة أو لا حرج لها في النمذجة 13",
-                            "en": "Option D) Null or non-critical value in modeling 13"
-                        }
+                    q: { ar: 'ماذا توضح قاعدة ديكارت للإشارات؟', en: "What does Descartes' Rule of Signs reveal?" },
+                    options: [
+                        { ar: 'عدد الأصفار الحقيقية الموجبة والسالبة بناءً على عدد تغيرات الإشارة في f(x) وf(-x)', en: 'The number of positive and negative real zeros based on the number of sign changes in f(x) and f(-x)' },
+                        { ar: 'القيمة الدقيقة لأصفار الدالة', en: 'The exact value of the zeros of the function' },
+                        { ar: 'درجة الدالة كثيرة الحدود فقط', en: 'Only the degree of the polynomial function' },
+                        { ar: 'معامل الحد الثابت فقط', en: 'Only the constant term coefficient' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "الخطوات والحل المعتمد يتطلب تطبيق الخصائص المباشرة لـ قانون ديكارت للإشارات للوصول للقيمة الصحيحة بشكل كامل ودقيق.",
-                        "en": "Steps and certified solution require applying direct properties of قانون ديكارت للإشارات to arrive at the correct value completely and accurately."
-                    }
+                    correct: 0,
+                    answer: { ar: 'توفر القاعدة معلومات عن عدد الأصفار الحقيقية الموجبة والسالبة من خلال فحص تغيرات الإشارة في f(x) وf(-x)', en: "The rule provides information about the number of positive and negative real zeros by examining sign changes in f(x) and f(-x)" }
                 },
                 {
-                    "q": {
-                        "ar": "سؤال تفاعلي 14: في درس كثيرات الحدود والدوال النسبية والمتباينات، حل المسألة التالية المتعلقة بـ قانون ديكارت للإشارات في الحقل الحقيقي؟",
-                        "en": "Interactive Question 14: In the lesson of polynomials, rational functions, and inequalities, solve the following problem related to قانون ديكارت للإشارات in the real field?"
-                    },
-                    "options": [
-                        {
-                            "ar": "الخيار أ) الحل النموذجي والنتيجة الدقيقة للمسألة الجبرية 14",
-                            "en": "Option A) The model solution and exact result of algebraic problem 14"
-                        },
-                        {
-                            "ar": "الخيار ب) إجابة بديلة تمثل خطأ شائعاً في التحليل الرياضي 14",
-                            "en": "Option B) Alternative answer representing a common error in mathematical analysis 14"
-                        },
-                        {
-                            "ar": "الخيار ج) حل تقريبي غير مكتمل يعبر عن دالة فرعية 14",
-                            "en": "Option C) Incomplete approximate solution expressing a sub-function 14"
-                        },
-                        {
-                            "ar": "الخيار د) قيمة منعدمة أو لا حرج لها في النمذجة 14",
-                            "en": "Option D) Null or non-critical value in modeling 14"
-                        }
+                    q: { ar: 'عدد الأصفار الحقيقية الموجبة للدالة f يساوي عدد تغيرات الإشارة في f(x) أو:', en: 'The number of positive real zeros of f equals the number of sign changes in f(x), or:' },
+                    options: [
+                        { ar: 'أصغر من هذا العدد بمقدار عدد زوجي', en: 'less than that number by an even number' },
+                        { ar: 'أكبر من هذا العدد بمقدار عدد فردي', en: 'greater than that number by an odd number' },
+                        { ar: 'نفس العدد دائماً بدون أي استثناء', en: 'always exactly the same number' },
+                        { ar: 'صفر دائماً بغض النظر عن الدالة', en: 'always zero regardless of the function' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "الخطوات والحل المعتمد يتطلب تطبيق الخصائص المباشرة لـ قانون ديكارت للإشارات للوصول للقيمة الصحيحة بشكل كامل ودقيق.",
-                        "en": "Steps and certified solution require applying direct properties of قانون ديكارت للإشارات to arrive at the correct value completely and accurately."
-                    }
+                    correct: 0,
+                    answer: { ar: 'عدد الأصفار الموجبة يساوي عدد تغيرات إشارة f(x) أو أصغر من هذا العدد بمقدار عدد زوجي، والمثل بالنسبة لأصفار f(-x) للسالبة', en: 'The number of positive zeros equals the number of sign changes in f(x), or is less than that by an even number; similarly for f(-x) with negative zeros' }
                 },
                 {
-                    "q": {
-                        "ar": "سؤال تفاعلي 15: في درس كثيرات الحدود والدوال النسبية والمتباينات، حل المسألة التالية المتعلقة بـ قانون ديكارت للإشارات في الحقل الحقيقي؟",
-                        "en": "Interactive Question 15: In the lesson of polynomials, rational functions, and inequalities, solve the following problem related to قانون ديكارت للإشارات in the real field?"
-                    },
-                    "options": [
-                        {
-                            "ar": "الخيار أ) الحل النموذجي والنتيجة الدقيقة للمسألة الجبرية 15",
-                            "en": "Option A) The model solution and exact result of algebraic problem 15"
-                        },
-                        {
-                            "ar": "الخيار ب) إجابة بديلة تمثل خطأ شائعاً في التحليل الرياضي 15",
-                            "en": "Option B) Alternative answer representing a common error in mathematical analysis 15"
-                        },
-                        {
-                            "ar": "الخيار ج) حل تقريبي غير مكتمل يعبر عن دالة فرعية 15",
-                            "en": "Option C) Incomplete approximate solution expressing a sub-function 15"
-                        },
-                        {
-                            "ar": "الخيار د) قيمة منعدمة أو لا حرج لها في النمذجة 15",
-                            "en": "Option D) Null or non-critical value in modeling 15"
-                        }
+                    q: { ar: 'ماذا تنص نظرية الجبر الأساسية؟', en: 'What does the Fundamental Theorem of Algebra state?' },
+                    options: [
+                        { ar: 'أي دالة كثيرة حدود من الدرجة n>0 تحتوي على صفر واحد على الأقل في نظام الأعداد المركبة', en: 'Any polynomial function of degree n>0 has at least one zero in the complex number system' },
+                        { ar: 'كل دالة كثيرة حدود لها صفر حقيقي واحد فقط', en: 'Every polynomial function has exactly one real zero' },
+                        { ar: 'لا يمكن لأي دالة أن يكون لها أصفار مركبة', en: 'No function can have complex zeros' },
+                        { ar: 'درجة الدالة لا علاقة لها بعدد أصفارها', en: 'The degree of the function is unrelated to the number of its zeros' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "الخطوات والحل المعتمد يتطلب تطبيق الخصائص المباشرة لـ قانون ديكارت للإشارات للوصول للقيمة الصحيحة بشكل كامل ودقيق.",
-                        "en": "Steps and certified solution require applying direct properties of قانون ديكارت للإشارات to arrive at the correct value completely and accurately."
-                    }
+                    correct: 0,
+                    answer: { ar: 'تحتوي أي دالة كثيرة حدود من الدرجة n>0 على صفر واحد على الأقل (حقيقي أو تخيلي) في نظام الأعداد المركبة', en: 'Any polynomial function of degree n>0 has at least one zero (real or imaginary) in the complex number system' }
                 },
                 {
-                    "q": {
-                        "ar": "سؤال تفاعلي 16: في درس كثيرات الحدود والدوال النسبية والمتباينات، حل المسألة التالية المتعلقة بـ قانون ديكارت للإشارات في الحقل الحقيقي؟",
-                        "en": "Interactive Question 16: In the lesson of polynomials, rational functions, and inequalities, solve the following problem related to قانون ديكارت للإشارات in the real field?"
-                    },
-                    "options": [
-                        {
-                            "ar": "الخيار أ) الحل النموذجي والنتيجة الدقيقة للمسألة الجبرية 16",
-                            "en": "Option A) The model solution and exact result of algebraic problem 16"
-                        },
-                        {
-                            "ar": "الخيار ب) إجابة بديلة تمثل خطأ شائعاً في التحليل الرياضي 16",
-                            "en": "Option B) Alternative answer representing a common error in mathematical analysis 16"
-                        },
-                        {
-                            "ar": "الخيار ج) حل تقريبي غير مكتمل يعبر عن دالة فرعية 16",
-                            "en": "Option C) Incomplete approximate solution expressing a sub-function 16"
-                        },
-                        {
-                            "ar": "الخيار د) قيمة منعدمة أو لا حرج لها في النمذجة 16",
-                            "en": "Option D) Null or non-critical value in modeling 16"
-                        }
+                    q: { ar: 'وفق نظرية الجذر المرافق، إذا كان a+bi صفراً لدالة كثيرة حدود بمعاملات حقيقية (b≠0)، فماذا يكون أيضاً صفراً؟', en: "By the Conjugate Root Theorem, if a+bi is a zero of a polynomial with real coefficients (b≠0), what is also a zero?" },
+                    options: [
+                        { ar: 'المرافق المركب a - bi', en: 'The complex conjugate a - bi' },
+                        { ar: 'العدد -a - bi', en: 'The number -a - bi' },
+                        { ar: 'العدد a فقط', en: 'The number a only' },
+                        { ar: 'لا يوجد صفر آخر مرتبط بذلك', en: 'There is no related zero' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "الخطوات والحل المعتمد يتطلب تطبيق الخصائص المباشرة لـ قانون ديكارت للإشارات للوصول للقيمة الصحيحة بشكل كامل ودقيق.",
-                        "en": "Steps and certified solution require applying direct properties of قانون ديكارت للإشارات to arrive at the correct value completely and accurately."
-                    }
+                    correct: 0,
+                    answer: { ar: 'عندما تحتوي معادلة كثيرة حدود بمعامل واحد ومعاملات حقيقية على جذر a+bi، فإن مرافقه المركب a-bi يُعد جذراً أيضاً', en: 'When a polynomial equation with real coefficients has a root a+bi, its complex conjugate a-bi is also a root' }
                 }
             ]
         },
         {
-            "id": "sec5",
-            "title": {
-                "ar": "🔹 الجزء الخامس: مهارات التفكير العليا والتحليل والربط المنطقي",
-                "en": "🔹 Part 5: Higher-Order Thinking, Analysis, and Logical Connections"
-            },
-            "questions": [
+            id: 'sec5',
+            title: { ar: '🔹 الجزء الخامس: التطبيقات المتقدمة والأصفار المركبة', en: '🔹 Part 5: Advanced Applications & Complex Zeros' },
+            questions: [
                 {
-                    "q": {
-                        "ar": "سؤال تفاعلي 17: في درس كثيرات الحدود والدوال النسبية والمتباينات، حل المسألة التالية المتعلقة بـ الجذور الحقيقية والمركبة في الحقل الحقيقي؟",
-                        "en": "Interactive Question 17: In the lesson of polynomials, rational functions, and inequalities, solve the following problem related to الجذور الحقيقية والمركبة in the real field?"
-                    },
-                    "options": [
-                        {
-                            "ar": "الخيار أ) الحل النموذجي والنتيجة الدقيقة للمسألة الجبرية 17",
-                            "en": "Option A) The model solution and exact result of algebraic problem 17"
-                        },
-                        {
-                            "ar": "الخيار ب) إجابة بديلة تمثل خطأ شائعاً في التحليل الرياضي 17",
-                            "en": "Option B) Alternative answer representing a common error in mathematical analysis 17"
-                        },
-                        {
-                            "ar": "الخيار ج) حل تقريبي غير مكتمل يعبر عن دالة فرعية 17",
-                            "en": "Option C) Incomplete approximate solution expressing a sub-function 17"
-                        },
-                        {
-                            "ar": "الخيار د) قيمة منعدمة أو لا حرج لها في النمذجة 17",
-                            "en": "Option D) Null or non-critical value in modeling 17"
-                        }
+                    q: { ar: 'عند معرفة أن 2-3i صفر لدالة كثيرة حدود بمعاملات حقيقية، كيف نستخدم هذه المعلومة لإيجاد باقي الأصفار؟', en: 'Knowing that 2-3i is a zero of a polynomial with real coefficients, how do we use this to find the remaining zeros?' },
+                    options: [
+                        { ar: 'نعرف أن 2+3i صفر أيضاً بحكم نظرية الجذر المرافق، ثم نقسم على العاملين لتخفيض درجة الدالة', en: 'We know 2+3i is also a zero by the Conjugate Root Theorem, then divide by both factors to reduce the degree' },
+                        { ar: 'نتجاهل هذا الصفر تماماً', en: 'We ignore this zero completely' },
+                        { ar: 'نفترض أن جميع الأصفار الأخرى حقيقية دون تحقق', en: 'We assume all other zeros are real without verification' },
+                        { ar: 'لا يمكن إيجاد باقي الأصفار إطلاقاً', en: 'The remaining zeros cannot be found at all' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "الخطوات والحل المعتمد يتطلب تطبيق الخصائص المباشرة لـ الجذور الحقيقية والمركبة للوصول للقيمة الصحيحة بشكل كامل ودقيق.",
-                        "en": "Steps and certified solution require applying direct properties of الجذور الحقيقية والمركبة to arrive at the correct value completely and accurately."
-                    }
+                    correct: 0,
+                    answer: { ar: 'بما أن 2-3i صفر، فإن 2+3i صفر أيضاً؛ نستخدم التعويض التركيبي بالقسمة على العاملين للحصول على الدالة المنخفضة وإيجاد باقي الأصفار', en: 'Since 2-3i is a zero, 2+3i is also a zero; we use synthetic substitution to divide by both factors to obtain the depressed function and find the remaining zeros' }
                 },
                 {
-                    "q": {
-                        "ar": "سؤال تفاعلي 18: في درس كثيرات الحدود والدوال النسبية والمتباينات، حل المسألة التالية المتعلقة بـ الجذور الحقيقية والمركبة في الحقل الحقيقي؟",
-                        "en": "Interactive Question 18: In the lesson of polynomials, rational functions, and inequalities, solve the following problem related to الجذور الحقيقية والمركبة in the real field?"
-                    },
-                    "options": [
-                        {
-                            "ar": "الخيار أ) الحل النموذجي والنتيجة الدقيقة للمسألة الجبرية 18",
-                            "en": "Option A) The model solution and exact result of algebraic problem 18"
-                        },
-                        {
-                            "ar": "الخيار ب) إجابة بديلة تمثل خطأ شائعاً في التحليل الرياضي 18",
-                            "en": "Option B) Alternative answer representing a common error in mathematical analysis 18"
-                        },
-                        {
-                            "ar": "الخيار ج) حل تقريبي غير مكتمل يعبر عن دالة فرعية 18",
-                            "en": "Option C) Incomplete approximate solution expressing a sub-function 18"
-                        },
-                        {
-                            "ar": "الخيار د) قيمة منعدمة أو لا حرج لها في النمذجة 18",
-                            "en": "Option D) Null or non-critical value in modeling 18"
-                        }
+                    q: { ar: 'نظرية التحليل إلى العوامل الخطية تنص على أن دالة من الدرجة n>0 يمكن كتابتها كناتج ضرب:', en: 'The Linear Factorization Theorem states that a function of degree n>0 can be written as the product of:' },
+                    options: [
+                        { ar: 'n عامل خطي بالصيغة f(x) = aₙ(x-c₁)(x-c₂)...(x-cₙ)', en: 'n linear factors in the form f(x) = aₙ(x-c₁)(x-c₂)...(x-cₙ)' },
+                        { ar: 'عاملين فقط دائماً', en: 'Only two factors, always' },
+                        { ar: 'عوامل تربيعية فقط', en: 'Quadratic factors only' },
+                        { ar: 'عامل واحد مرفوع للأس n', en: 'A single factor raised to the power n' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "الخطوات والحل المعتمد يتطلب تطبيق الخصائص المباشرة لـ الجذور الحقيقية والمركبة للوصول للقيمة الصحيحة بشكل كامل ودقيق.",
-                        "en": "Steps and certified solution require applying direct properties of الجذور الحقيقية والمركبة to arrive at the correct value completely and accurately."
-                    }
+                    correct: 0,
+                    answer: { ar: 'تنص النظرية على أن الدالة f من الدرجة n>0 تحتوي على n عامل خطي بالصيغة f(x)=aₙ(x-c₁)(x-c₂)...(x-cₙ) حيث cᵢ هي الأصفار المركبة', en: 'The theorem states that a degree-n>0 function f has n linear factors of the form f(x)=aₙ(x-c₁)(x-c₂)...(x-cₙ) where cᵢ are the complex zeros' }
                 },
                 {
-                    "q": {
-                        "ar": "سؤال تفاعلي 19: في درس كثيرات الحدود والدوال النسبية والمتباينات، حل المسألة التالية المتعلقة بـ الجذور الحقيقية والمركبة في الحقل الحقيقي؟",
-                        "en": "Interactive Question 19: In the lesson of polynomials, rational functions, and inequalities, solve the following problem related to الجذور الحقيقية والمركبة in the real field?"
-                    },
-                    "options": [
-                        {
-                            "ar": "الخيار أ) الحل النموذجي والنتيجة الدقيقة للمسألة الجبرية 19",
-                            "en": "Option A) The model solution and exact result of algebraic problem 19"
-                        },
-                        {
-                            "ar": "الخيار ب) إجابة بديلة تمثل خطأ شائعاً في التحليل الرياضي 19",
-                            "en": "Option B) Alternative answer representing a common error in mathematical analysis 19"
-                        },
-                        {
-                            "ar": "الخيار ج) حل تقريبي غير مكتمل يعبر عن دالة فرعية 19",
-                            "en": "Option C) Incomplete approximate solution expressing a sub-function 19"
-                        },
-                        {
-                            "ar": "الخيار د) قيمة منعدمة أو لا حرج لها في النمذجة 19",
-                            "en": "Option D) Null or non-critical value in modeling 19"
-                        }
+                    q: { ar: 'في تطبيق حياتي مثل حساب الزمن اللازم لبيع عدد معين من ألعاب الفيديو، كيف تُستخدم نظرية الأصفار النسبية؟', en: 'In a real-life application like calculating the time to sell a certain number of video games, how is the Rational Zero Theorem used?' },
+                    options: [
+                        { ar: 'بتحويل المسألة إلى معادلة كثيرة حدود تساوي صفراً ثم إيجاد الحل المنطقي (كرفض القيم السالبة للزمن)', en: 'By converting the problem into a polynomial equation equal to zero, then finding the logical solution (rejecting negative time values)' },
+                        { ar: 'باشتقاق الدالة لإيجاد أعلى قيمة', en: 'By differentiating the function to find the maximum value' },
+                        { ar: 'بتكامل الدالة لحساب المساحة', en: 'By integrating the function to calculate the area' },
+                        { ar: 'لا علاقة للنظرية بالتطبيقات الحياتية', en: 'The theorem has no relation to real-life applications' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "الخطوات والحل المعتمد يتطلب تطبيق الخصائص المباشرة لـ الجذور الحقيقية والمركبة للوصول للقيمة الصحيحة بشكل كامل ودقيق.",
-                        "en": "Steps and certified solution require applying direct properties of الجذور الحقيقية والمركبة to arrive at the correct value completely and accurately."
-                    }
+                    correct: 0,
+                    answer: { ar: 'تُحوَّل المسألة إلى معادلة كثيرة حدود تساوي صفراً، ثم تُستخدم نظرية الأصفار النسبية والتعويض التركيبي لإيجاد الحل المنطقي المقبول', en: 'The problem is converted into a polynomial equation equal to zero, then the Rational Zero Theorem and synthetic substitution are used to find the acceptable logical solution' }
                 },
                 {
-                    "q": {
-                        "ar": "سؤال تفاعلي 20: في درس كثيرات الحدود والدوال النسبية والمتباينات، حل المسألة التالية المتعلقة بـ الجذور الحقيقية والمركبة في الحقل الحقيقي؟",
-                        "en": "Interactive Question 20: In the lesson of polynomials, rational functions, and inequalities, solve the following problem related to الجذور الحقيقية والمركبة in the real field?"
-                    },
-                    "options": [
-                        {
-                            "ar": "الخيار أ) الحل النموذجي والنتيجة الدقيقة للمسألة الجبرية 20",
-                            "en": "Option A) The model solution and exact result of algebraic problem 20"
-                        },
-                        {
-                            "ar": "الخيار ب) إجابة بديلة تمثل خطأ شائعاً في التحليل الرياضي 20",
-                            "en": "Option B) Alternative answer representing a common error in mathematical analysis 20"
-                        },
-                        {
-                            "ar": "الخيار ج) حل تقريبي غير مكتمل يعبر عن دالة فرعية 20",
-                            "en": "Option C) Incomplete approximate solution expressing a sub-function 20"
-                        },
-                        {
-                            "ar": "الخيار د) قيمة منعدمة أو لا حرج لها في النمذجة 20",
-                            "en": "Option D) Null or non-critical value in modeling 20"
-                        }
+                    q: { ar: 'عند تحليل دالة كثيرة حدود على نظام الأعداد الحقيقية، يمكن كتابتها كناتج ضرب:', en: 'When factoring a polynomial over the real numbers, it can be written as the product of:' },
+                    options: [
+                        { ar: 'عوامل خطية وعوامل تربيعية غير قابلة للاختزال', en: 'Linear factors and irreducible quadratic factors' },
+                        { ar: 'عوامل خطية فقط في كل الحالات', en: 'Linear factors only in all cases' },
+                        { ar: 'عوامل مركبة فقط', en: 'Complex factors only' },
+                        { ar: 'لا يمكن تحليلها أبداً', en: 'It can never be factored' }
                     ],
-                    "correct": 0,
-                    "answer": {
-                        "ar": "الخطوات والحل المعتمد يتطلب تطبيق الخصائص المباشرة لـ الجذور الحقيقية والمركبة للوصول للقيمة الصحيحة بشكل كامل ودقيق.",
-                        "en": "Steps and certified solution require applying direct properties of الجذور الحقيقية والمركبة to arrive at the correct value completely and accurately."
-                    }
+                    correct: 0,
+                    answer: { ar: 'يمكن كتابة كل دالة كثيرة حدود من الدرجة n>0 بمعاملات حقيقية كناتج ضرب عوامل خطية وعوامل الجذور التربيعية غير القابلة للاختزال', en: 'Every polynomial of degree n>0 with real coefficients can be written as the product of linear factors and irreducible quadratic factors' }
                 }
             ]
         }
@@ -818,6 +444,8 @@ function prepareShuffledExam() {
             globalIdx++;
         });
     });
+    
+    console.log('✅ تم خلط الأسئلة والخيارات بنجاح');
 }
 
 function reshuffleExam() {
@@ -854,8 +482,8 @@ function setLanguage(lang) {
 function renderExam() {
     const container = document.getElementById('exam-content');
     const labels = {
-        ar: { option: ['أ', 'ب', 'ج', 'د'], answer: '✅ الإجابة الصحيحة:' },
-        en: { option: ['A', 'B', 'C', 'D'], answer: '✅ Correct Answer:' }
+        ar: { option: ['أ', 'ب', 'ج', 'د'], answer: '✅ الإجابة:' },
+        en: { option: ['A', 'B', 'C', 'D'], answer: '✅ Answer:' }
     };
     const lbl = labels[currentLang];
     const isRTL = currentLang === 'ar';
@@ -866,13 +494,13 @@ function renderExam() {
     examData.sections.forEach((section) => {
         html += `
         <section class="bg-white p-6 rounded-xl shadow-lg">
-            <h2 class="text-xl font-bold mb-4 text-teal-700">${section.title[currentLang]}</h2>
+            <h2 class="text-xl font-bold mb-4 text-purple-700">${section.title[currentLang]}</h2>
             <ol class="space-y-4 text-sm">`;
             
         section.questions.forEach((q) => {
             const borderSide = isRTL ? 'border-r-4 pr-4' : 'border-l-4 pl-4';
             html += `
-                <li class="${borderSide} border-teal-500 py-2" id="q-${globalIdx}">
+                <li class="${borderSide} border-purple-500 py-2" id="q-${globalIdx}">
                     <strong>${globalIdx + 1}.</strong> ${q.q[currentLang]}<br>`;
                     
             q.options.forEach((opt, oIdx) => {
@@ -937,17 +565,15 @@ function gradeExam() {
                 correctCount++;
                 li.classList.add('correct');
                 li.classList.remove('incorrect');
-            } else {
-                li.classList.add('incorrect');
-                li.classList.remove('correct');
-            }
-
-            if (isCorrect) {
+                
                 if (i < 4) sec1++;
                 else if (i < 8) sec2++;
                 else if (i < 12) sec3++;
                 else if (i < 16) sec4++;
                 else sec5++;
+            } else {
+                li.classList.add('incorrect');
+                li.classList.remove('correct');
             }
         }
     }
@@ -955,7 +581,7 @@ function gradeExam() {
     const score = (correctCount / 20) * 100;
     const successRate = Math.round(score);
     
-    document.getElementById('res-total').textContent = `${successRate} / 100`;
+    document.getElementById('res-total').textContent = `${Math.round(score)} / 100`;
     document.getElementById('res-name').textContent = document.getElementById('studentName').value || (currentLang === 'ar' ? 'طالب' : 'Student');
     document.getElementById('res-date').textContent = new Date().toLocaleDateString(currentLang === 'ar' ? 'ar-AE' : 'en-US');
     
@@ -1000,43 +626,31 @@ function sendResultsToEmail() {
     const badge = document.getElementById('success-badge').textContent;
 
     const sectionNames = {
-        ar: [
-            "الجزء الأول: المفاهيم والقواعد الأساسية والتعريفات",
-            "الجزء الثاني: العمليات الحسابية والحلول العددية الدقيقة",
-            "الجزء الثالث: المهارات المتقدمة والتطبيقات والمسائل",
-            "الجزء الرابع: النمذجة الرياضية والتمثيل البياني والمسائل العملية",
-            "الجزء الخامس: مهارات التفكير العليا والتحليل والربط المنطقي"
-        ],
-        en: [
-            "Part 1: Basic Concepts, Rules, and Definitions",
-            "Part 2: Calculations and Exact Numerical Solutions",
-            "Part 3: Advanced Skills, Applications, and Problems",
-            "Part 4: Mathematical Modeling, Graphing, and Practical Problems",
-            "Part 5: Higher-Order Thinking, Analysis, and Logical Connections"
-        ]
+        ar: ['أساسيات نظرية الصفر النسبي', 'خطوات إيجاد الأصفار النسبية والتعويض التركيبي', 'اختبارات القيمتين العظمى والصغرى', 'قاعدة ديكارت ونظرية الجبر الأساسية', 'التطبيقات المتقدمة والأصفار المركبة'],
+        en: ['Basics of the Rational Zero Theorem', 'Steps for Finding Rational Zeros & Synthetic Substitution', 'Upper and Lower Bound Tests', "Descartes' Rule & Fundamental Theorem of Algebra", 'Advanced Applications & Complex Zeros']
     };
     const currentSectionNames = sectionNames[currentLang];
 
     let answersHTML = `
-        <div style="font-family: 'Segoe UI', Tahoma, Arial, sans-serif; direction: ${currentLang === 'ar' ? 'rtl' : 'ltr'}; text-align: ${currentLang === 'ar' ? 'right' : 'left'};">
-            <div style="background: linear-gradient(135deg, #0d9488, #0891b2); color: white; padding: 20px; border-radius: 10px 10px 0 0; text-align: center;">
-                <h2 style="margin: 0; font-size: 22px;">⚡ ${currentLang === 'ar' ? 'نتيجة امتحان الرياضيات والتحليل التفاعلي' : 'Math Interactive Exam Result'}</h2>
-                <p style="margin: 5px 0 0 0; opacity: 0.9;">${currentLang === 'ar' ? 'رياضيات الصف الحادي عشر متقدم | الفصل الدراسي الأول' : 'Grade 11 Advanced Math | Term 1'}</p>
+        <div style="font-family: 'Segoe UI', Tahoma, Arial, sans-serif; direction: ${currentLang === 'ar' ? 'rtl' : 'ltr'};">
+            <div style="background: linear-gradient(135deg, #7c3aed, #db2777); color: white; padding: 20px; border-radius: 10px 10px 0 0; text-align: center;">
+                <h2 style="margin: 0; font-size: 22px;">🧮 ${currentLang === 'ar' ? 'نتيجة امتحان أصفار الدوال كثيرة الحدود' : 'Zeros of Polynomial Functions Exam Result'}</h2>
+                <p style="margin: 5px 0 0 0; opacity: 0.9;">${currentLang === 'ar' ? 'Zeros of Polynomial Functions' : 'Zeros of Polynomial Functions'}</p>
                 <p style="margin: 5px 0 0 0; font-size: 12px; opacity: 0.8;">🔀 ${currentLang === 'ar' ? 'تم خلط الأسئلة تلقائياً' : 'Questions were randomly shuffled'}</p>
             </div>
             
-            <div style="background: #f0fdfa; padding: 15px; border: 1px solid #99f6e4;">
+            <div style="background: #f5f3ff; padding: 15px; border: 1px solid #ddd6fe;">
                 <table style="width: 100%; border-collapse: collapse;">
                     <tr>
-                        <td style="padding: 8px; font-weight: bold; color: #0f766e;">${currentLang === 'ar' ? '👤 الاسم:' : '👤 Name:'}</td>
+                        <td style="padding: 8px; font-weight: bold; color: #6d28d9;">${currentLang === 'ar' ? '👤 الاسم:' : '👤 Name:'}</td>
                         <td style="padding: 8px;">${name}</td>
-                        <td style="padding: 8px; font-weight: bold; color: #0f766e;">${currentLang === 'ar' ? '🏫 الشعبة:' : '🏫 Class:'}</td>
+                        <td style="padding: 8px; font-weight: bold; color: #6d28d9;">${currentLang === 'ar' ? '🏫 الشعبة:' : '🏫 Class:'}</td>
                         <td style="padding: 8px;">${studentClass}</td>
                     </tr>
                     <tr>
-                        <td style="padding: 8px; font-weight: bold; color: #0f766e;">${currentLang === 'ar' ? '📅 التاريخ:' : '📅 Date:'}</td>
+                        <td style="padding: 8px; font-weight: bold; color: #6d28d9;">${currentLang === 'ar' ? '📅 التاريخ:' : '📅 Date:'}</td>
                         <td style="padding: 8px;">${date}</td>
-                        <td style="padding: 8px; font-weight: bold; color: #0f766e;">${currentLang === 'ar' ? '🏆 التقدير:' : '🏆 Grade:'}</td>
+                        <td style="padding: 8px; font-weight: bold; color: #6d28d9;">${currentLang === 'ar' ? '🏆 التقدير:' : '🏆 Grade:'}</td>
                         <td style="padding: 8px;">${badge}</td>
                     </tr>
                 </table>
@@ -1044,7 +658,7 @@ function sendResultsToEmail() {
 
             <div style="background: white; padding: 20px; text-align: center; border-bottom: 2px solid #e5e7eb;">
                 <div style="display: inline-block; margin: 0 15px;">
-                    <div style="font-size: 32px; font-weight: bold; color: #0d9488;">${score}</div>
+                    <div style="font-size: 32px; font-weight: bold; color: #7c3aed;">${score}</div>
                     <div style="color: #6b7280; font-size: 13px;">${currentLang === 'ar' ? 'الدرجة الكلية' : 'Total Score'}</div>
                 </div>
                 <div style="display: inline-block; margin: 0 15px;">
@@ -1054,16 +668,16 @@ function sendResultsToEmail() {
             </div>
 
             <h3 style="background: #f3f4f6; padding: 12px; margin: 0; color: #1f2937; border-bottom: 2px solid #d1d5db;">
-                ${currentLang === 'ar' ? '📝 تفاصيل الإجابات' : '📝 Answer Details'}
+                📝 ${currentLang === 'ar' ? 'تفاصيل الإجابات' : 'Answer Details'}
             </h3>
             <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
                 <thead>
-                    <tr style="background: #0d9488; color: white;">
-                        <th style="padding: 10px; border: 1px solid #0b7d73; width: 8%;">#</th>
-                        <th style="padding: 10px; border: 1px solid #0b7d73; width: 32%;">${currentLang === 'ar' ? 'القسم' : 'Section'}</th>
-                        <th style="padding: 10px; border: 1px solid #0b7d73; width: 15%;">${currentLang === 'ar' ? 'الإجابة' : 'Answer'}</th>
-                        <th style="padding: 10px; border: 1px solid #0b7d73; width: 15%;">${currentLang === 'ar' ? 'الصحيحة' : 'Correct'}</th>
-                        <th style="padding: 10px; border: 1px solid #0b7d73; width: 15%;">${currentLang === 'ar' ? 'النتيجة' : 'Status'}</th>
+                    <tr style="background: #7c3aed; color: white;">
+                        <th style="padding: 10px; border: 1px solid #6d28d9; width: 8%;">#</th>
+                        <th style="padding: 10px; border: 1px solid #6d28d9; width: 32%;">${currentLang === 'ar' ? 'القسم' : 'Section'}</th>
+                        <th style="padding: 10px; border: 1px solid #6d28d9; width: 15%;">${currentLang === 'ar' ? 'الإجابة' : 'Answer'}</th>
+                        <th style="padding: 10px; border: 1px solid #6d28d9; width: 15%;">${currentLang === 'ar' ? 'الصحيحة' : 'Correct'}</th>
+                        <th style="padding: 10px; border: 1px solid #6d28d9; width: 15%;">${currentLang === 'ar' ? 'النتيجة' : 'Status'}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -1106,15 +720,15 @@ function sendResultsToEmail() {
                 </tbody>
             </table>
 
-            <h3 style="background: #f3f4f6; padding: 12px; margin: 0; color: #1f2937; border-bottom: 2px solid #d1d5db; border-top: 3px solid #0d9488;">
+            <h3 style="background: #f3f4f6; padding: 12px; margin: 0; color: #1f2937; border-bottom: 2px solid #d1d5db; border-top: 3px solid #7c3aed;">
                 📊 ${currentLang === 'ar' ? 'تفصيل الأداء' : 'Performance Breakdown'}
             </h3>
             <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
                 <thead>
-                    <tr style="background: #7c3aed; color: white;">
-                        <th style="padding: 10px; border: 1px solid #6d28d9;">${currentLang === 'ar' ? 'القسم' : 'Section'}</th>
-                        <th style="padding: 10px; border: 1px solid #6d28d9; width: 20%;">${currentLang === 'ar' ? 'النتيجة' : 'Score'}</th>
-                        <th style="padding: 10px; border: 1px solid #6d28d9; width: 20%;">${currentLang === 'ar' ? 'النسبة' : 'Percentage'}</th>
+                    <tr style="background: #db2777; color: white;">
+                        <th style="padding: 10px; border: 1px solid #be185d;">${currentLang === 'ar' ? 'القسم' : 'Section'}</th>
+                        <th style="padding: 10px; border: 1px solid #be185d; width: 20%;">${currentLang === 'ar' ? 'النتيجة' : 'Score'}</th>
+                        <th style="padding: 10px; border: 1px solid #be185d; width: 20%;">${currentLang === 'ar' ? 'النسبة' : 'Percentage'}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -1128,7 +742,7 @@ function sendResultsToEmail() {
         answersHTML += `
             <tr style="background: ${rowBg};">
                 <td style="padding: 10px; border: 1px solid #e5e7eb; font-weight: 600;">${currentSectionNames[i]}</td>
-                <td style="padding: 10px; border: 1px solid #e5e7eb; text-align: center; font-weight: bold; color: #0d9488;">
+                <td style="padding: 10px; border: 1px solid #e5e7eb; text-align: center; font-weight: bold; color: #7c3aed;">
                     ${sectionScores[i]} / ${sectionTotals[i]}
                 </td>
                 <td style="padding: 10px; border: 1px solid #e5e7eb;">
